@@ -8,6 +8,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
 
+import org.apache.commons.io.FileUtils;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -21,23 +23,19 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
 
+import com.POMfamework.helper.Utils.ExtentManager;
+import com.POMfamework.helper.browserConfiguration.BrowserType;
+import com.POMfamework.helper.browserConfiguration.ChromeBrowser;
+import com.POMfamework.helper.browserConfiguration.FirefoxBrowser;
+import com.POMfamework.helper.browserConfiguration.IEBrowser;
+import com.POMfamework.helper.browserConfiguration.config.PropertyReader;
+import com.POMfamework.helper.browserConfiguration.config.objectreader;
+import com.POMfamework.helper.logger.LoggerHelper;
+import com.POMfamework.helper.wait.WaitHelper;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
 
-import org.apache.commons.io.FileUtils;
-import org.apache.commons.logging.Log;
-import org.apache.log4j.Logger;
-import uiframework.uiframework.Paragcom.Utils.ExtentManager;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.BrowserType;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.ChromeBrowser;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.FirefoxBrowser;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.IEBrowser;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.config.PropertyReader;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.config.objectreader;
-import uiframework.uiframework.Paragcom.freecrm.helper.resource.ResourceHelper;
-import uiframework.uiframework.Paragcom.freecrm.helper.wait.WaitHelper;
-import uiframework.uiframework.Paragcom.freecrm.logger.LoggerHelper;
 
 
 
@@ -46,7 +44,7 @@ public class TestBase
 	public static ExtentReports extent;
 	public static ExtentTest test;
 	public static WebDriver driver;
-	private  Logger log = LoggerHelper.getlogger(TestBase.class);
+	private  Logger log = LoggerHelper.GetLogger(TestBase.class);
 	public static File  reportDirectery;
 			
 			
@@ -121,13 +119,13 @@ public class TestBase
 			case Chrome:
 				// get object of ChromeBrowser class
 				ChromeBrowser chrome = ChromeBrowser.class.newInstance();
-				ChromeOptions optionc = chrome.getChromeOption();
+				ChromeOptions optionc = chrome.getChromeOptions();
 				return chrome.getChromeDriver(optionc);
 			case Firefox:
 				FirefoxBrowser firefox =  FirefoxBrowser.class.newInstance();
-				FirefoxOptions optionf = firefox.getFirefoxOptions();
+				FirefoxOptions optionf = firefox.FirefoxOptions();
 				return firefox.getFirefoxDriver(optionf);
-			case InternetExplorer:
+			case IEexplorer:
 				IEBrowser InternetExplorer = IEBrowser.class.newInstance();
 				InternetExplorerOptions optionie = InternetExplorer.getIExplorerCapabilities();
 				InternetExplorer.getIExplorerDriver(optionie);
@@ -155,8 +153,8 @@ public class TestBase
 		driver = BrowserObject(btype);
 		log.info("initalized webdriver" + driver.hashCode());
 		WaitHelper wait = new WaitHelper(driver);
-		wait.pageLoadTime(objectreader.reader.getPageLoadTimeout(), TimeUnit.SECONDS);
-		wait.setImplicitWait(objectreader.reader.getImplicitWait(), TimeUnit.SECONDS);
+		wait.PageLoad(objectreader.reader.getPageLoadTimeout(), TimeUnit.SECONDS);
+		wait.SetImplicitWait(objectreader.reader.getImplicitWait(), TimeUnit.SECONDS);
 		driver.manage().window().maximize();
 		
 	}

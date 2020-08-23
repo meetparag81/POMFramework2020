@@ -4,7 +4,7 @@ public enum BrowserType
 {
 	Firefox,
 	Chrome,
-	IEexplorer
+	IEexplorer, 
 	
 
 }
