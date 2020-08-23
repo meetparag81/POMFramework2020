@@ -1,12 +1,13 @@
 package POMfamework_Test;
 
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import com.POMfamework.helper.assertion.AssertHelper;
 import com.POMfamework.testbase.TestBase;
 
 
-
+@Listeners()
 public class Test1 extends  TestBase {
 	
 	@Test

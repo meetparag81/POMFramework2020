@@ -9,20 +9,22 @@ import java.util.Properties;
 import org.apache.log4j.Logger;
 import org.apache.poi.POIXMLProperties;
 
-import uiframework.uiframework.Paragcom.TestBase.TestBase;
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.BrowserType;
-import uiframework.uiframework.Paragcom.freecrm.helper.resource.ResourceHelper;
-import uiframework.uiframework.Paragcom.freecrm.logger.LoggerHelper;
+import com.POMfamework.helper.logger.LoggerHelper;
+import com.POMfamework.helper.resource.ResourceHelper;
+import com.POMfamework.helper.browserConfiguration.BrowserType;
+import com.POMfamework.helper.browserConfiguration.config.ConfigReader;
+
+
 
 public class PropertyReader implements ConfigReader 
 {
-	Logger log= LoggerHelper.getlogger(PropertyReader.class);
+	Logger log= LoggerHelper.GetLogger(PropertyReader.class);
 	private static FileInputStream fis;
 	public static Properties prop;
 	
 	public PropertyReader()  
 	{
-		String filepath = ResourceHelper.getResourcePath("\\src\\main\\resources\\configfile\\config.properties");
+		String filepath = ResourceHelper.GetResourcePath("\\src\\main\\resources\\configfile\\config.properties");
 			 try 
 			 {
 			 fis = new FileInputStream(new File(filepath));
@@ -65,11 +67,12 @@ public class PropertyReader implements ConfigReader
 	
 	} 
 
-	public BrowserType getBrowserType() 
-	{
-		
-		
-	return BrowserType.valueOf("Firefox");	
+	
+
+
+	public BrowserType getBrowserType() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 

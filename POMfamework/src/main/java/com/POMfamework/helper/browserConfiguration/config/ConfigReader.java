@@ -1,6 +1,6 @@
 package com.POMfamework.helper.browserConfiguration.config;
 
-import uiframework.uiframework.Paragcom.freecrm.helper.BrowserConfiguration.BrowserType;
+import com.POMfamework.helper.browserConfiguration.BrowserType;
 
 public interface ConfigReader 
 {
@@ -8,6 +8,6 @@ public interface ConfigReader
 	public int getImplicitWait();
 	public int getexplicitWait();
 	public int getPageLoadTimeout();
-	public  void getBrowserType();
+	public  BrowserType getBrowserType();
 
 }

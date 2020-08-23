@@ -16,12 +16,14 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.Reporter;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import com.POMfamework.helper.Utils.ExtentManager;
 import com.POMfamework.helper.browserConfiguration.BrowserType;
@@ -31,6 +33,7 @@ import com.POMfamework.helper.browserConfiguration.IEBrowser;
 import com.POMfamework.helper.browserConfiguration.config.PropertyReader;
 import com.POMfamework.helper.browserConfiguration.config.objectreader;
 import com.POMfamework.helper.logger.LoggerHelper;
+import com.POMfamework.helper.resource.ResourceHelper;
 import com.POMfamework.helper.wait.WaitHelper;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
@@ -46,11 +49,6 @@ public class TestBase
 	public static WebDriver driver;
 	private  Logger log = LoggerHelper.GetLogger(TestBase.class);
 	public static File  reportDirectery;
-			
-			
-			
-			
-			
 	
 	@ BeforeSuite
 	public void Beforesuite()
@@ -66,6 +64,9 @@ public class TestBase
 		
 	}
 	
+	private void SetUpTheDriver(Object browserType) {
+		
+	}
 	@ BeforeTest
 	public void BeforeAnyClass()
 	{
@@ -73,9 +74,6 @@ public class TestBase
 	String temp="testLogin";
 			ExtentTest check = extent.createTest(temp);
 	test = check;
-	
-		
-		
 		
 	}
 	@BeforeMethod
@@ -180,7 +178,7 @@ public class TestBase
 		 File source = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
 		try
 		{
-			 desfile = ResourceHelper.getResourcePath(path)+ filename + "_" + formater.format(calendar.getTime()) + ".png";
+			 desfile = ResourceHelper.GetResourcePath(path)+ filename + "_" + formater.format(calendar.getTime()) + ".png";
 			 File finalDestination = new File(desfile);
 			 try 
 				{
@@ -239,12 +237,14 @@ return destination;
 	public  void navigatetoscreen(WebDriver driver) 
 	{
 		log.info("capturing ui navigation screen...");
-		
-		
-		
-		 
-		
+	
 	}
+	
+	@Test
+	public void TestTheCases(){
+		Assert.assertTrue(true);
+	}
+	
 }
 	
 
